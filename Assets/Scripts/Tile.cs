@@ -6,17 +6,11 @@ public class Tile : MonoBehaviour
 {
     private Transform tileTransform;
 
-    public enum TileTypes{ 
-        Spawn,
-        DestPoint,
-        Wall,
-        Free}
-
     private Tile upperTile;
     private Tile lowerTile;
     private Tile leftTile;
     private Tile rightTile;
-    private TileTypes tileType;
+    [HideInInspector] public TileTypes tileType;
     private int tileMaterial;
     private int tileSize;
     private bool isSelected;
@@ -28,28 +22,45 @@ public class Tile : MonoBehaviour
         isSelected = false;}
 
 
-     public void FixedUpdate() { 
+    public void FixedUpdate() { 
             materialControl();}
 
-     public void tileInitSize(int size){ 
+    public void tileInitSize(int size){ 
         tileSize = size;
         tileTransform.localScale = new Vector3(tileSize,0.1f,tileSize);}
 
     public void tileInitPosition(Vector3 tilePosition){ 
         tileTransform.position = tilePosition;} 
 
+    public void initTileType(char typeSign){ 
+        switch(typeSign){ 
 
-     public TileTypes type{
-        get{
-            return tileType;}
-        set{
-            tileType = value;}}
+            case TMC.signWall:
+                tileType = TileTypes.Wall;
+                break;
+
+            case TMC.signSpawn:
+                tileType = TileTypes.Spawn;
+                break;
+
+            case TMC.signDestPoint:
+                tileType = TileTypes.DestPoint;
+                break;
+                
+            case TMC.signFree:
+                tileType = TileTypes.Free;
+                break;}}
+
 
 
     public int material{
         set{
             tileMaterial = value;
             GetComponent<MeshRenderer>().material = tileMaterials[tileMaterial];}}
+
+    public int size{
+        get{
+            return tileSize;}}
 
 
     public bool selected{
@@ -63,8 +74,19 @@ public class Tile : MonoBehaviour
             tileMaterial = TMC.DEFAULT_TILE_COLOR;
             material = tileMaterial;}
 
-        if(isSelected && tileMaterial != TMC.GREEN_TILE_COLOR){
+        if((isSelected && tileMaterial != TMC.GREEN_TILE_COLOR) && tileType == TileTypes.Free){
             tileMaterial = TMC.GREEN_TILE_COLOR;
+            material = tileMaterial;}
+        
+        if(isSelected && tileType != TileTypes.Free){
+            tileMaterial = TMC.YELLOW_TILE_COLOR;
             material = tileMaterial;}}
 
 }
+
+
+public enum TileTypes{ 
+    Spawn,
+    DestPoint,
+    Wall,
+    Free}

@@ -5,15 +5,20 @@ using UnityEngine;
 public class GameBoard : MonoBehaviour{
     
     private Vector3Int boardSize; 
+    [SerializeField] private int boardSizeX;
+    [SerializeField] private int boardSizeY;
     [SerializeField] private Vector3 boardPosition; 
     [SerializeField] private int tileSize;
     [SerializeField] private Tile tilePrefab;
+    private TileWalls wallsManager;
     private Transform boardTransform;
     private ArrayList tileList;
+    private ArrayList wallsList;
     private string boardView;
-    public RaycastHit hit;
+    [HideInInspector]public RaycastHit hit;
     private Tile selectedTile;
     private Tile previousSelectedTile = null;
+
 
     public void boardInitialization(){
         initBoardTransform();
@@ -38,7 +43,11 @@ public class GameBoard : MonoBehaviour{
         boardTransform = this.transform;}
 
 
-    private void initVariables(){}
+    private void initVariables(){
+        wallsManager = GetComponent<TileWalls>();
+        wallsManager.wallTypesListInit(4);
+        tileList = new ArrayList();
+        wallsList = new ArrayList();}
 
 
     public void tilesSelectionChange(){ 
@@ -49,15 +58,15 @@ public class GameBoard : MonoBehaviour{
 
 
     private void initBoardSizeAndView(){ 
-        boardSize = new Vector3Int(10,0,10);
+        boardSize = new Vector3Int(boardSizeX,0,boardSizeY);
         initBoardScale();
-        boardView = "**********"+
+        boardView = "***W******"+
+                    "W*********"+
+                    "*******W**"+
+                    "*S*****W**"+
                     "**********"+
                     "**********"+
-                    "*S********"+
-                    "**********"+
-                    "**********"+
-                    "**********"+
+                    "*W*****W**"+
                     "**********"+
                     "********D*"+
                     "**********";
@@ -68,18 +77,16 @@ public class GameBoard : MonoBehaviour{
     public void createTileSet(){ 
         Tile initTile;
         Vector3 tileSPosition = new Vector3(boardPosition.x-boardSize.x*tileSize/2.0f+0.5f*tileSize, 0, boardPosition.z-boardSize.z*tileSize/2.0f+0.5f*tileSize);
-        tileList = new ArrayList();
 
         for(int iX = 0; iX < boardSize.x ;iX++) {
             for(int iZ = 0; iZ < boardSize.z; iZ++){
-                if(boardView[iX+iZ*boardSize.z] != '0'){
                     initTile = Instantiate(tilePrefab);
                     initTile.Start();
                     initTile.tileInitPosition(new Vector3(tileSPosition.x+iX*tileSize,0,tileSPosition.z+iZ*tileSize));
                     initTile.tileInitSize(tileSize);
-                    tileList.Add(initTile);}
-                else{ 
-                    tileList.Add(null);}}}}
+                    initTile.initTileType(boardView[iX*boardSize.z + iZ]);
+                    tileList.Add(initTile);
+                    setTileLocatedObject(initTile);}}}
 
 
     public void choiceTileCheck(){ 
@@ -94,10 +101,23 @@ public class GameBoard : MonoBehaviour{
                 previousSelectedTile = selectedTile;
                 selectedTile = null; 
                 tilesSelectionChange();}}}
+
+
+    public void setTileLocatedObject(Tile thisTile){ 
+        switch(thisTile.tileType){ 
+            case TileTypes.Wall:{
+                Wall nWall = Instantiate(wallsManager.walls[(int)WallTypes.pineTree]);
+                nWall.bindTile(thisTile);
+                wallsList.Add(nWall);}
+            break;}}
 }
 
 
 static class TMC{ 
     public const int DEFAULT_TILE_COLOR = 0; 
     public const int GREEN_TILE_COLOR = 1; 
-    public const int YELLOW_TILE_COLOR = 2;}
+    public const int YELLOW_TILE_COLOR = 2;
+    public const char signWall = 'W';
+    public const char signDestPoint = 'D';
+    public const char signSpawn = 'S';
+    public const char signFree = '*';}
