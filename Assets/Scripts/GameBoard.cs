@@ -14,7 +14,7 @@ public class GameBoard : MonoBehaviour{
     private Transform boardTransform;
     private ArrayList tileList;
     private ArrayList wallsList;
-    private string boardView;
+    public string boardView;
     [HideInInspector]public RaycastHit hit;
     private Tile selectedTile;
     private Tile previousSelectedTile = null;
