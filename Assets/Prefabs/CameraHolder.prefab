@@ -145,3 +145,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 8
   mainCamera: {fileID: 4675096012571336404}
+  gameBoard: {fileID: 0}

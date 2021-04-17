@@ -114,6 +114,9 @@ MonoBehaviour:
   tileSize: 1
   tilePrefab: {fileID: 1796781734470246827, guid: c079020fdcbdb484eab4d23848ba4be5,
     type: 3}
+  goodPortal: {fileID: 0}
+  evilPortal: {fileID: 0}
+  boardView: 
 --- !u!114 &3148525876118313140
 MonoBehaviour:
   m_ObjectHideFlags: 0

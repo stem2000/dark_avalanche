@@ -5,11 +5,15 @@ using UnityEngine;
 public class GameBoard : MonoBehaviour{
     
     private Vector3Int boardSize; 
+
     [SerializeField] private int boardSizeX;
     [SerializeField] private int boardSizeY;
     [SerializeField] private Vector3 boardPosition; 
     [SerializeField] private int tileSize;
     [SerializeField] private Tile tilePrefab;
+    [SerializeField] private Portal goodPortal;
+    [SerializeField] private Portal evilPortal;
+
     private TileWalls wallsManager;
     private Transform boardTransform;
     private ArrayList tileList;
@@ -41,6 +45,7 @@ public class GameBoard : MonoBehaviour{
 
     private void initBoardTransform(){ 
         boardTransform = this.transform;}
+
 
 
     private void initVariables(){
@@ -109,7 +114,20 @@ public class GameBoard : MonoBehaviour{
                 Wall nWall = Instantiate(wallsManager.walls[(int)WallTypes.pineTree]);
                 nWall.bindTile(thisTile);
                 wallsList.Add(nWall);}
+                break;
+            case TileTypes.Spawn:{
+                Portal nPortal = Instantiate(evilPortal);
+                nPortal.bindTile(thisTile);}
+                break;
+            case TileTypes.DestPoint:{
+                Portal nPortal = Instantiate(goodPortal);
+                nPortal.bindTile(thisTile);}
                 break;}}
+
+
+    public float size{
+        get{
+            return boardSize.magnitude;}}
 }
 
 
