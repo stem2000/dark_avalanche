@@ -109,7 +109,7 @@ public class GameBoard : MonoBehaviour{
                 Wall nWall = Instantiate(wallsManager.walls[(int)WallTypes.pineTree]);
                 nWall.bindTile(thisTile);
                 wallsList.Add(nWall);}
-            break;}}
+                break;}}
 }
 
 

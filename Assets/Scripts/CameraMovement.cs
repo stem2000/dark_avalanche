@@ -22,4 +22,8 @@ public class CameraMovement : MonoBehaviour{
         float correctMovVer = movVer;
         movement = new Vector3(correctMovHor,0.0f,correctMovVer);
         Debug.Log(movHor.ToString());
-        transform.Translate(movement.normalized * Speed * Time.fixedDeltaTime);} }
+        transform.Translate(movement.normalized * Speed * Time.fixedDeltaTime);} 
+    
+    
+    public void Rotation(){ 
+        }}
