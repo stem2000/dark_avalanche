@@ -6,10 +6,10 @@ public class Tile : MonoBehaviour
 {
     private Transform tileTransform;
 
-    private Tile upperTile;
-    private Tile lowerTile;
-    private Tile leftTile;
-    private Tile rightTile;
+    public Tile upperTile;
+    public Tile lowerTile;
+    public Tile leftTile;
+    public Tile rightTile;
     [HideInInspector] public TileTypes tileType;
     private int tileMaterial;
     private int tileSize;

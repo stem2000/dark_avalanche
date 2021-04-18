@@ -17,7 +17,7 @@ public class GameBoard : MonoBehaviour{
 
     private TileWalls wallsManager;
     private Transform boardTransform;
-    private ArrayList tileList;
+    private Tile[] tileList;
     private ArrayList wallsList;
     public string boardView;
     [HideInInspector]public RaycastHit hit;
@@ -53,7 +53,7 @@ public class GameBoard : MonoBehaviour{
     private void initVariables(){
         wallsManager = GetComponent<TileWalls>();
         wallsManager.wallTypesListInit(4);
-        tileList = new ArrayList();
+        tileList = new Tile[boardSizeX*boardSizeY];
         wallsList = new ArrayList();}
 
 
@@ -80,9 +80,9 @@ public class GameBoard : MonoBehaviour{
         boardView = "***W******"+
                     "W*********"+
                     "*******W**"+
-                    "*S*****W**"+
-                    "**********"+
-                    "**********"+
+                    "*S********"+
+                    "*****W****"+
+                    "**W*******"+
                     "*W*****W**"+
                     "**********"+
                     "********D*"+
@@ -102,7 +102,7 @@ public class GameBoard : MonoBehaviour{
                     initTile.tileInitPosition(new Vector3(tileSPosition.x+iX*tileSize,0,tileSPosition.z+iZ*tileSize));
                     initTile.tileInitSize(tileSize);
                     initTile.initTileType(boardView[iX*boardSize.z + iZ]);
-                    tileList.Add(initTile);
+                    tileList[iX+iZ] = (initTile);
                     setTileLocatedObject(initTile);}}}
 
 
@@ -112,8 +112,7 @@ public class GameBoard : MonoBehaviour{
                 if (hit.collider.gameObject.layer == 8){
                     previousSelectedTile = selectedTile;
                     selectedTile = hit.collider.gameObject.GetComponent<Tile>();
-                    tilesSelectionChange();
-                    Debug.Log("Selected tile - " + tileList.IndexOf(selectedTile).ToString());}}
+                    tilesSelectionChange();}}
             else{
                 previousSelectedTile = selectedTile;
                 selectedTile = null; 

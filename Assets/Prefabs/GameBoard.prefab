@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5859919090252768435}
   - component: {fileID: 6115357737424442583}
   - component: {fileID: 3148525876118313140}
+  - component: {fileID: -4778821258738687057}
   m_Layer: 0
   m_Name: GameBoard
   m_TagString: Untagged
@@ -116,6 +117,7 @@ MonoBehaviour:
     type: 3}
   goodPortal: {fileID: 0}
   evilPortal: {fileID: 0}
+  land: {fileID: 0}
   boardView: 
 --- !u!114 &3148525876118313140
 MonoBehaviour:
@@ -132,3 +134,15 @@ MonoBehaviour:
   walls:
   - {fileID: 6758375940109826766, guid: ebd8f700204888d4482655b00746f868, type: 3}
   wallTypesList: 
+--- !u!114 &-4778821258738687057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123505390270083463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cebcb20abbe964c45a9aa9215fe97157, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
