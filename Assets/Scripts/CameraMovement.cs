@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour{
     [SerializeField] private float Speed = 3.0f;
+    [SerializeField] private float rotationSpeed = 3.0f;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private GameBoard gameBoard;
     private Vector3 movement = Vector3.zero;
@@ -16,7 +17,8 @@ public class CameraMovement : MonoBehaviour{
 
 
     private void FixedUpdate(){
-        Movement();}
+        Movement();
+        Rotation();}
     
 
     private void Movement(){ 
@@ -33,4 +35,12 @@ public class CameraMovement : MonoBehaviour{
     
     
     public void Rotation(){ 
-        }}
+        float rotHor = Input.GetAxis("CameraRotationAxis"); 
+        float signRotation = 0;
+        if(rotHor > 0)
+            signRotation = 1;
+        else if(rotHor < 0)
+            signRotation = - 1;
+        else if(rotHor == 0)
+            signRotation = 0;
+        transform.RotateAround(gameBoard.transform.position,new Vector3(0,1,0),signRotation*rotationSpeed);}}
