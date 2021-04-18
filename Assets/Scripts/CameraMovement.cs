@@ -25,7 +25,7 @@ public class CameraMovement : MonoBehaviour{
         float movHor = Input.GetAxis("Horizontal");
         float movVer = Input.GetAxis("Vertical");
         movement = new Vector3(movHor,0.0f,movVer);
-        if((transform.position - gameBoard.transform.position + movement.normalized).magnitude < gameBoard.size*2){
+        if((transform.position - gameBoard.transform.position + movement.normalized).magnitude < gameBoard.size*4){
             transform.Translate(movement.normalized * Speed * Time.fixedDeltaTime); }
         else{
             transform.position = new Vector3(

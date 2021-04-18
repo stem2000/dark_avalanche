@@ -13,6 +13,7 @@ public class GameBoard : MonoBehaviour{
     [SerializeField] private Tile tilePrefab;
     [SerializeField] private Portal goodPortal;
     [SerializeField] private Portal evilPortal;
+    [SerializeField] private GameObject land;
 
     private TileWalls wallsManager;
     private Transform boardTransform;
@@ -28,6 +29,7 @@ public class GameBoard : MonoBehaviour{
         initBoardTransform();
         initBoardSizeAndView();
         initBoardPosition();
+        landInit();
         initVariables();}
 
 
@@ -53,6 +55,16 @@ public class GameBoard : MonoBehaviour{
         wallsManager.wallTypesListInit(4);
         tileList = new ArrayList();
         wallsList = new ArrayList();}
+
+
+    private void landInit(){ 
+        land.transform.localScale = new Vector3(land.transform.localScale.x* 0.1f * tileSize * boardSize.x,
+                                                land.transform.localScale.y* 0.1f * tileSize * (boardSize.z+boardSize.x)/2,
+                                                land.transform.localScale.x* 0.1f * tileSize * boardSize.z);
+
+        land.transform.position = new Vector3(transform.position.x,
+                                              transform.position.y-land.transform.localScale.y / 2,
+                                              transform.position.z);}
 
 
     public void tilesSelectionChange(){ 
