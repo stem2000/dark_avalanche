@@ -5,6 +5,14 @@ using UnityEngine;
 public class pathBindSearch : MonoBehaviour
 {
 
+    private List<Tile> destinationTiles;
+    private List<Tile> tilesQueue;
+
+
+    public void Start() {
+        destinationTiles = new List<Tile>();}
+
+
     public void bindTileRelations(Tile[] tileList, int boardSizeX,int boardSizeZ){ 
         for(int iX = 0; iX < boardSizeX ;iX++) {
             for(int iZ = 0; iZ < boardSizeZ; iZ++){ 
@@ -28,4 +36,51 @@ public class pathBindSearch : MonoBehaviour
                     tileList[iX+iZ].lowerTile = tileList[iX + iZ - boardSizeX];
                 else 
                     tileList[iX+iZ].lowerTile = null;}}}
+
+
+    private void findDestPoint(Tile[] tileList){ 
+            for(int i = 0; i < tileList.Length; i++){ 
+                tileList[i].tileType = TileTypes.DestPoint;
+                    destinationTiles.Add(tileList[i]);}}
+
+
+    public void BFS(Tile[] tileList){
+        Tile leftT;
+        Tile rightT;
+        Tile upperT;
+        Tile lowerT;
+        Tile startFP;
+
+        startFP = destinationTiles[0];
+        tilesQueue.Add(startFP);
+
+        while(tilesQueue.Count != 0){ 
+
+            rightT = tilesQueue[0].rightTile;
+            upperT = tilesQueue[0].upperTile;
+            leftT = tilesQueue[0].leftTile;
+            lowerT = tilesQueue[0].lowerTile;
+
+
+            if(rightT != null && rightT.searchState == false){ 
+                rightT.tileDirection = rightT.leftTile;
+                rightT.searchState = true;
+                tilesQueue.Add(rightT);}
+
+            if(upperT != null && upperT.searchState == false){ 
+                upperT.tileDirection = upperT.lowerTile;
+                upperT.searchState = true;
+                tilesQueue.Add(upperT);}
+
+            if(leftT != null && leftT.searchState == false){ 
+                leftT.tileDirection = leftT.rightTile;
+                leftT.searchState = true;
+                tilesQueue.Add(leftT);}
+
+            if(lowerT != null && lowerT.searchState == false){ 
+                lowerT.tileDirection = lowerT.upperTile;
+                lowerT.searchState = true;
+                tilesQueue.Add(lowerT);}
+
+            tilesQueue.RemoveAt(0);}}
 }

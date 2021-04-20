@@ -10,6 +10,8 @@ public class Tile : MonoBehaviour
     public Tile lowerTile;
     public Tile leftTile;
     public Tile rightTile;
+    public Tile tileDirection;
+    public bool searchState;
     [HideInInspector] public TileTypes tileType;
     private int tileMaterial;
     private int tileSize;
@@ -19,7 +21,8 @@ public class Tile : MonoBehaviour
     public void Start() {
         tileTransform = transform;
         upperTile = lowerTile = leftTile = rightTile = null;
-        isSelected = false;}
+        isSelected = false;
+        searchState = false;}
 
 
     public void FixedUpdate() { 
