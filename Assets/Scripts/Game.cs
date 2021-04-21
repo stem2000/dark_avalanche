@@ -12,7 +12,7 @@ public class Game : MonoBehaviour
         board.createTileSet(); 
         board.initTilesRelations();
         board.pathBuilding();
-       /* enemySpawner.spawnEnemy(board.getSpawnTile());*/}
+        enemySpawner.spawnEnemy(board.getSpawnTile());}
 
 
     void Update(){
