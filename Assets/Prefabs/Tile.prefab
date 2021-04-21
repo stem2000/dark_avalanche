@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b0a7e0a9f92cb7a46861b89b96c62a57, type: 2}
+  - {fileID: 2100000, guid: a343e0766229ebd4e978d17ff04af436, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -107,6 +107,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5811f21b3a9350a43bde483dc1f503f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upperTile: {fileID: 0}
+  lowerTile: {fileID: 0}
+  leftTile: {fileID: 0}
+  rightTile: {fileID: 0}
+  tileDirection: {fileID: 0}
+  searchState: 0
+  tileType: 0
+  tileIndex: 0
   tileMaterials:
   - {fileID: 2100000, guid: b0a7e0a9f92cb7a46861b89b96c62a57, type: 2}
   - {fileID: 2100000, guid: c696c39338270584780aeb9fae2c0de5, type: 2}
@@ -123,3 +131,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe002a3c0e9682a4cb8f5500bdfb2f0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  walls: []
+  wallTypesList: 

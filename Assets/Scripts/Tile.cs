@@ -10,6 +10,12 @@ public class Tile : MonoBehaviour
     public Tile lowerTile;
     public Tile leftTile;
     public Tile rightTile;
+
+    public int upperTileInt;
+    public int lowerTileInt;
+    public int leftTileInt;
+    public int rightTileInt;
+
     public Tile tileDirection;
     public bool searchState;
     [HideInInspector] public TileTypes tileType;
@@ -18,12 +24,6 @@ public class Tile : MonoBehaviour
     private bool isSelected;
     public int tileIndex;
     [SerializeField] Material[] tileMaterials;
-
-    public void Start() {
-        tileTransform = transform;
-        upperTile = lowerTile = leftTile = rightTile = null;
-        isSelected = false;
-        searchState = false;}
 
 
     public void FixedUpdate() { 
@@ -35,6 +35,14 @@ public class Tile : MonoBehaviour
 
     public void tileInitPosition(Vector3 tilePosition){ 
         tileTransform.position = tilePosition;} 
+
+
+    public void tileInitVariables(){ 
+        upperTile = lowerTile = leftTile = rightTile = null;
+        upperTileInt = lowerTileInt = leftTileInt = rightTileInt = -1;
+        tileTransform = transform;
+        isSelected = false;
+        searchState = false;}
 
     public void initTileType(char typeSign){ 
         switch(typeSign){ 

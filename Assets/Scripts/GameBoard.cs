@@ -116,17 +116,15 @@ public class GameBoard : MonoBehaviour{
     public void createTileSet(){ 
         Tile initTile;
         Vector3 tileSPosition = new Vector3(boardPosition.x-boardSize.x*tileSize/2.0f+0.5f*tileSize, 0, boardPosition.z-boardSize.z*tileSize/2.0f+0.5f*tileSize);
-        int allTilesCount = 0;
         for(int iX = 0; iX < boardSize.x ;iX++) {
             for(int iZ = 0; iZ < boardSize.z; iZ++){
                     initTile = Instantiate(tilePrefab);
-                    initTile.Start();
+                    initTile.tileInitVariables();
                     initTile.tileInitPosition(new Vector3(tileSPosition.x+iX*tileSize,0,tileSPosition.z+iZ*tileSize));
                     initTile.tileInitSize(tileSize);
                     initTile.initTileType(boardView[iX*boardSize.z + iZ]);
-                    tileList[allTilesCount] = initTile;
-                    initTile.tileIndex = allTilesCount;
-                    allTilesCount++;
+                    tileList[iX*10+iZ] = initTile;
+                    initTile.tileIndex = iX*10+iZ;
                     setTileLocatedObject(initTile);}}}
 
 

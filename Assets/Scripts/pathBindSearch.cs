@@ -10,27 +10,25 @@ public class PathBindSearch : MonoBehaviour{
 
     public void bindTileRelations(Tile[] tileList, int boardSizeX,int boardSizeZ){ 
 
-        for(int iX = 0; iX < boardSizeX*boardSizeZ ;iX++) {
-
-                if(iX - 1 > 0)
-                    tileList[iX].leftTile = tileList[iX - 1];
-                else {
-                    tileList[iX].leftTile = null;}
-
-                if(iX + 1 < boardSizeX*boardSizeZ)
-                    tileList[iX].rightTile = tileList[iX + 1];
-                else 
-                    tileList[iX].rightTile = null;
-
-                if(iX + boardSizeX < boardSizeX*boardSizeZ)
-                    tileList[iX].upperTile = tileList[iX + boardSizeX];
-                else 
-                    tileList[iX].upperTile = null;
-
-                if(iX - boardSizeX > 0)
-                    tileList[iX].lowerTile = tileList[iX - boardSizeX];
-                else 
-                    tileList[iX].lowerTile = null;}}
+        for(int iX = 0; iX < boardSizeX; iX++){ 
+            for(int iZ = 0; iZ < boardSizeZ-1; iZ++){ 
+                    tileList[iX*boardSizeZ+iZ].upperTile = tileList[iX*boardSizeZ+iZ + 1];
+                    tileList[iX*boardSizeZ+iZ].upperTileInt = iX*boardSizeZ+iZ + 1;}}
+        
+        for(int iX = 0; iX < boardSizeX; iX++){ 
+            for(int iZ = boardSizeZ - 1; iZ > 0; iZ--){ 
+                    tileList[iX*boardSizeZ+iZ].lowerTile = tileList[iX*boardSizeZ+iZ - 1];
+                    tileList[iX*boardSizeZ+iZ].lowerTileInt = iX*boardSizeZ+iZ - 1;}}
+        
+        for(int iZ = 0; iZ < boardSizeZ; iZ++){ 
+            for(int iX = 0; iX < boardSizeX-1; iX++){ 
+                    tileList[iX*boardSizeZ+iZ].rightTile = tileList[(iX+1)*boardSizeZ+iZ];
+                    tileList[iX*boardSizeZ+iZ].rightTileInt = (iX+1)*boardSizeZ+iZ;}}
+        
+        for(int iZ = 0; iZ < boardSizeZ; iZ++){ 
+            for(int iX = boardSizeX - 1; iX > 0; iX--){ 
+                    tileList[iX*boardSizeZ+iZ].leftTile = tileList[(iX-1)*boardSizeZ+iZ];
+                    tileList[iX*boardSizeZ+iZ].leftTileInt = (iX-1)*boardSizeZ+iZ;}}}
 
 
     public void findDestPoint(Tile[] tileList){ 
@@ -57,23 +55,27 @@ public class PathBindSearch : MonoBehaviour{
             lowerT = tilesQueue[0].lowerTile;
 
 
-            if(rightT != null && rightT.searchState == false){ 
-                rightT.tileDirection = rightT.leftTile;
+            if(rightT != null && rightT.searchState == false && rightT.tileType != TileTypes.Wall){ 
+                rightT.tileDirection = tilesQueue[0];
+                rightT.transform.Rotate(new Vector3(0,90,0));
                 rightT.searchState = true;
                 tilesQueue.Add(rightT);}
 
-            if(upperT != null && upperT.searchState == false){ 
-                upperT.tileDirection = upperT.lowerTile;
+            if(upperT != null && upperT.searchState == false && upperT.tileType != TileTypes.Wall){ 
+                upperT.tileDirection = tilesQueue[0];
+                upperT.transform.Rotate(new Vector3(0,180,0));
                 upperT.searchState = true;
                 tilesQueue.Add(upperT);}
 
-            if(leftT != null && leftT.searchState == false){ 
-                leftT.tileDirection = leftT.rightTile;
+            if(leftT != null && leftT.searchState == false && leftT.tileType != TileTypes.Wall){ 
+                leftT.tileDirection = tilesQueue[0];
+                leftT.transform.Rotate(new Vector3(0,-90,0));
                 leftT.searchState = true;
                 tilesQueue.Add(leftT);}
 
-            if(lowerT != null && lowerT.searchState == false){ 
-                lowerT.tileDirection = lowerT.upperTile;
+            if(lowerT != null && lowerT.searchState == false && lowerT.tileType != TileTypes.Wall){ 
+                lowerT.tileDirection = tilesQueue[0];
+                lowerT.transform.Rotate(new Vector3(0,180,0));
                 lowerT.searchState = true;
                 tilesQueue.Add(lowerT);}
 
