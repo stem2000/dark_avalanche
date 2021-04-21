@@ -2,45 +2,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class pathBindSearch : MonoBehaviour
-{
+public class PathBindSearch : MonoBehaviour{
 
-    private List<Tile> destinationTiles;
-    private List<Tile> tilesQueue;
-
-
-    public void Start() {
-        destinationTiles = new List<Tile>();}
+    private List<Tile> destinationTiles = new List<Tile>();
+    private List<Tile> tilesQueue = new List<Tile>();
 
 
     public void bindTileRelations(Tile[] tileList, int boardSizeX,int boardSizeZ){ 
-        for(int iX = 0; iX < boardSizeX ;iX++) {
-            for(int iZ = 0; iZ < boardSizeZ; iZ++){ 
 
-                if(iX + iZ - 1 > 0)
-                    tileList[iX+iZ].leftTile = tileList[iX + iZ - 1];
+        for(int iX = 0; iX < boardSizeX*boardSizeZ ;iX++) {
+
+                if(iX - 1 > 0)
+                    tileList[iX].leftTile = tileList[iX - 1];
+                else {
+                    tileList[iX].leftTile = null;}
+
+                if(iX + 1 < boardSizeX*boardSizeZ)
+                    tileList[iX].rightTile = tileList[iX + 1];
                 else 
-                    tileList[iX+iZ].leftTile = null;
+                    tileList[iX].rightTile = null;
 
-                if(iX + iZ + 1 < boardSizeX*boardSizeZ)
-                    tileList[iX+iZ].rightTile = tileList[iX + iZ + 1];
+                if(iX + boardSizeX < boardSizeX*boardSizeZ)
+                    tileList[iX].upperTile = tileList[iX + boardSizeX];
                 else 
-                    tileList[iX+iZ].rightTile = null;
+                    tileList[iX].upperTile = null;
 
-                if(iX + iZ + boardSizeX < boardSizeX*boardSizeZ)
-                    tileList[iX+iZ].upperTile = tileList[iX + iZ + boardSizeX];
+                if(iX - boardSizeX > 0)
+                    tileList[iX].lowerTile = tileList[iX - boardSizeX];
                 else 
-                    tileList[iX+iZ].upperTile = null;
-
-                if(iX + iZ - boardSizeX > 0)
-                    tileList[iX+iZ].lowerTile = tileList[iX + iZ - boardSizeX];
-                else 
-                    tileList[iX+iZ].lowerTile = null;}}}
+                    tileList[iX].lowerTile = null;}}
 
 
-    private void findDestPoint(Tile[] tileList){ 
+    public void findDestPoint(Tile[] tileList){ 
             for(int i = 0; i < tileList.Length; i++){ 
-                tileList[i].tileType = TileTypes.DestPoint;
+                if(tileList[i].tileType == TileTypes.DestPoint)
                     destinationTiles.Add(tileList[i]);}}
 
 
@@ -52,10 +47,10 @@ public class pathBindSearch : MonoBehaviour
         Tile startFP;
 
         startFP = destinationTiles[0];
+        startFP.searchState = true;
         tilesQueue.Add(startFP);
 
         while(tilesQueue.Count != 0){ 
-
             rightT = tilesQueue[0].rightTile;
             upperT = tilesQueue[0].upperTile;
             leftT = tilesQueue[0].leftTile;

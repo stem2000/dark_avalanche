@@ -15,6 +15,7 @@ public class GameBoard : MonoBehaviour{
     [SerializeField] private Portal evilPortal;
     [SerializeField] private GameObject land;
 
+    private PathBindSearch pathModule; 
     private TileWalls wallsManager;
     private Transform boardTransform;
     private Tile[] tileList;
@@ -26,11 +27,11 @@ public class GameBoard : MonoBehaviour{
 
 
     public void boardInitialization(){
+        initVariables();
         initBoardTransform();
         initBoardSizeAndView();
         initBoardPosition();
-        landInit();
-        initVariables();}
+        landInit();}
 
 
     public void FixedUpdate() {
@@ -49,12 +50,33 @@ public class GameBoard : MonoBehaviour{
         boardTransform = this.transform;}
 
 
+    public void initTilesRelations(){ 
+        pathModule.bindTileRelations(tileList,boardSizeX,boardSizeY);}
+
+
+    public float size{
+        get{
+            return boardSize.magnitude;}}
+        
+        
+    public void pathBuilding(){ 
+            pathModule.findDestPoint(tileList);
+            pathModule.BFS(tileList);}
+
 
     private void initVariables(){
         wallsManager = GetComponent<TileWalls>();
         wallsManager.wallTypesListInit(4);
         tileList = new Tile[boardSizeX*boardSizeY];
-        wallsList = new ArrayList();}
+        wallsList = new ArrayList();
+        pathModule = GetComponent<PathBindSearch>();}
+
+
+    public Tile getSpawnTile(){ 
+        for(int i = 0; i < tileList.Length;i++){ 
+            if(tileList[i].tileType == TileTypes.Spawn){ 
+                return tileList[i]; }}
+        return tileList[0];}
 
 
     private void landInit(){ 
@@ -94,7 +116,7 @@ public class GameBoard : MonoBehaviour{
     public void createTileSet(){ 
         Tile initTile;
         Vector3 tileSPosition = new Vector3(boardPosition.x-boardSize.x*tileSize/2.0f+0.5f*tileSize, 0, boardPosition.z-boardSize.z*tileSize/2.0f+0.5f*tileSize);
-
+        int allTilesCount = 0;
         for(int iX = 0; iX < boardSize.x ;iX++) {
             for(int iZ = 0; iZ < boardSize.z; iZ++){
                     initTile = Instantiate(tilePrefab);
@@ -102,7 +124,9 @@ public class GameBoard : MonoBehaviour{
                     initTile.tileInitPosition(new Vector3(tileSPosition.x+iX*tileSize,0,tileSPosition.z+iZ*tileSize));
                     initTile.tileInitSize(tileSize);
                     initTile.initTileType(boardView[iX*boardSize.z + iZ]);
-                    tileList[iX+iZ] = (initTile);
+                    tileList[allTilesCount] = initTile;
+                    initTile.tileIndex = allTilesCount;
+                    allTilesCount++;
                     setTileLocatedObject(initTile);}}}
 
 
@@ -134,11 +158,6 @@ public class GameBoard : MonoBehaviour{
                 Portal nPortal = Instantiate(goodPortal);
                 nPortal.bindTile(thisTile);}
                 break;}}
-
-
-    public float size{
-        get{
-            return boardSize.magnitude;}}
 }
 
 

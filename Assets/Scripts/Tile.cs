@@ -16,6 +16,7 @@ public class Tile : MonoBehaviour
     private int tileMaterial;
     private int tileSize;
     private bool isSelected;
+    public int tileIndex;
     [SerializeField] Material[] tileMaterials;
 
     public void Start() {
