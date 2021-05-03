@@ -18,7 +18,7 @@ public class Tile : MonoBehaviour
 
     public Tile tileDirection;
     public bool searchState;
-    [HideInInspector] public TileTypes tileType;
+    public TileTypes tileType;
     private int tileMaterial;
     private int tileSize;
     private bool isSelected;

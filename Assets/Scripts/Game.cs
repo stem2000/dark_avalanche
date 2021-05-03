@@ -5,17 +5,24 @@ using UnityEngine;
 public class Game : MonoBehaviour
 {
     [SerializeField] GameBoard board;
-    [SerializeField] private EnemySpawner enemySpawner;
+    [SerializeField] TowerBuilding towerBuilder;
+    [SerializeField] private EnemySpawner[] enemySpawners;
     
+
     void Start(){
         board.boardInitialization();
         board.createTileSet(); 
         board.initTilesRelations();
         board.pathBuilding();
-        enemySpawner.spawnEnemy(board.getSpawnTile());}
+        towerBuilder.board = board;
+        spawnerStartTileInit();}
 
 
-    void Update(){
-        
-    }
+    void spawnerStartTileInit(){ 
+        for(int i = 0; i < enemySpawners.Length; i++){ 
+            enemySpawners[i].tileSpawn = board.getSpawnTile();}}
+
+
+
+
 }

@@ -61,7 +61,8 @@ public class GameBoard : MonoBehaviour{
         
     public void pathBuilding(){ 
             pathModule.findDestPoint(tileList);
-            pathModule.BFS(tileList);}
+            pathModule.BFS(tileList);
+            pathModule.reactivateTilesState(tileList);}
 
 
     private void initVariables(){
@@ -94,6 +95,12 @@ public class GameBoard : MonoBehaviour{
             previousSelectedTile.selected = false;}
         if(selectedTile != null){ 
             selectedTile.selected = true;}}
+
+
+    public void takeOffSelection(){ 
+        if(selectedTile != null){ 
+            selectedTile.selected = false;}
+        selectedTile = previousSelectedTile = null;}
 
 
     private void initBoardSizeAndView(){ 
@@ -156,6 +163,10 @@ public class GameBoard : MonoBehaviour{
                 Portal nPortal = Instantiate(goodPortal);
                 nPortal.bindTile(thisTile);}
                 break;}}
+
+
+    public Tile getSelectedTile(){ 
+        return selectedTile;}
 }
 
 

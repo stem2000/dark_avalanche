@@ -80,4 +80,9 @@ public class PathBindSearch : MonoBehaviour{
                 tilesQueue.Add(lowerT);}
 
             tilesQueue.RemoveAt(0);}}
+
+
+    public void reactivateTilesState(Tile[] tileList){ 
+        for(int i = 0; i < tileList.Length;i++){ 
+            tileList[i].searchState = false;}}
 }
