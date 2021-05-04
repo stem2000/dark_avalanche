@@ -25,7 +25,6 @@ public class Tower : MonoBehaviour{
     private void targetSearch(){
             int trigger = Physics.OverlapSphereNonAlloc(transform.localPosition,radius,collidersEnemy,enemiesLayerMask);    
             if(trigger != 0){ 
-                Debug.Log("+Target");
                 targetIsActive = true;
                 currentTarget = collidersEnemy[0].gameObject.GetComponent<Enemy>();}}
 

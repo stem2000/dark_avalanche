@@ -60,9 +60,9 @@ public class GameBoard : MonoBehaviour{
         
         
     public void pathBuilding(){ 
+            pathModule.reactivateTilesState(tileList);
             pathModule.findDestPoint(tileList);
-            pathModule.BFS(tileList);
-            pathModule.reactivateTilesState(tileList);}
+            pathModule.BFS(tileList);}
 
 
     private void initVariables(){

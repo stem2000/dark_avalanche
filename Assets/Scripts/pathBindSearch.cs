@@ -49,6 +49,7 @@ public class PathBindSearch : MonoBehaviour{
         tilesQueue.Add(startFP);
 
         while(tilesQueue.Count != 0){ 
+
             rightT = tilesQueue[0].rightTile;
             upperT = tilesQueue[0].upperTile;
             leftT = tilesQueue[0].leftTile;
@@ -57,25 +58,25 @@ public class PathBindSearch : MonoBehaviour{
 
             if(rightT != null && rightT.searchState == false && rightT.tileType != TileTypes.Wall){ 
                 rightT.tileDirection = tilesQueue[0];
-                rightT.transform.Rotate(new Vector3(0,90,0));
+                //rightT.transform.Rotate(new Vector3(0,90,0));
                 rightT.searchState = true;
                 tilesQueue.Add(rightT);}
 
             if(upperT != null && upperT.searchState == false && upperT.tileType != TileTypes.Wall){ 
                 upperT.tileDirection = tilesQueue[0];
-                upperT.transform.Rotate(new Vector3(0,180,0));
+                //upperT.transform.Rotate(new Vector3(0,180,0));
                 upperT.searchState = true;
                 tilesQueue.Add(upperT);}
 
             if(leftT != null && leftT.searchState == false && leftT.tileType != TileTypes.Wall){ 
                 leftT.tileDirection = tilesQueue[0];
-                leftT.transform.Rotate(new Vector3(0,-90,0));
+                //leftT.transform.Rotate(new Vector3(0,-90,0));
                 leftT.searchState = true;
                 tilesQueue.Add(leftT);}
 
             if(lowerT != null && lowerT.searchState == false && lowerT.tileType != TileTypes.Wall){ 
                 lowerT.tileDirection = tilesQueue[0];
-                lowerT.transform.Rotate(new Vector3(0,180,0));
+                //lowerT.transform.Rotate(new Vector3(0,180,0));
                 lowerT.searchState = true;
                 tilesQueue.Add(lowerT);}
 
@@ -84,5 +85,6 @@ public class PathBindSearch : MonoBehaviour{
 
     public void reactivateTilesState(Tile[] tileList){ 
         for(int i = 0; i < tileList.Length;i++){ 
-            tileList[i].searchState = false;}}
+            tileList[i].searchState = false;
+            tileList[i].tileDirection = null;}}
 }

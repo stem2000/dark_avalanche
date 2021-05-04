@@ -40,7 +40,9 @@ public class EnemyMovement : MonoBehaviour
             nextTile = nextTile.tileDirection;
         else if(nextTile.tileType == TileTypes.DestPoint){ 
                 speed = 0;
-                gameObject.SetActive(false);}}
+                gameObject.SetActive(false);}
+        else{ 
+            speed = 0;}}
 
 
     public void setDirection(){ 
