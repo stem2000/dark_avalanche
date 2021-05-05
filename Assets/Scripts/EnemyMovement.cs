@@ -12,6 +12,7 @@ public class EnemyMovement : MonoBehaviour
     private Animator skeletAnim;
 
 
+
     public void startTileInit(Tile startTile){ 
             this.startTile = startTile;
             nextTile = startTile.tileDirection;}

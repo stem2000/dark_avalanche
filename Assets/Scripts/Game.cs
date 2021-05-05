@@ -15,6 +15,7 @@ public class Game : MonoBehaviour
         board.initTilesRelations();
         board.pathBuilding();
         towerBuilder.board = board;
+        board.towerBuilder = towerBuilder;
         spawnerStartTileInit();}
 
 

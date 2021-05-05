@@ -6,6 +6,8 @@ public class Tower : MonoBehaviour{
 
     [SerializeField] private float radius;
     public float sizeCompensation;
+    public Tile connectedTile = null;
+    public bool towerSelectedByPlayer = false;
     Collider[] collidersEnemy = new Collider[1];
     private Enemy currentTarget;
     private bool targetIsActive = false;
@@ -15,11 +17,21 @@ public class Tower : MonoBehaviour{
         collidersEnemy = new Collider[1];}
 
 
+    public bool isTriggered(){ 
+        return targetIsActive;}
+
+
+    public Enemy getFocusEnemy(){ 
+        if(targetIsActive)
+            return currentTarget;
+        return null;}
+
+
     private void FixedUpdate() {
         if(!targetIsActive)
             targetSearch();
-        if(targetIsActive)
-            attackTarget();}
+        if(!targetIsAvailable())
+            targetIsActive = false;}
 
 
     private void targetSearch(){
@@ -27,11 +39,11 @@ public class Tower : MonoBehaviour{
             if(trigger != 0){ 
                 targetIsActive = true;
                 currentTarget = collidersEnemy[0].gameObject.GetComponent<Enemy>();}}
-
-
-    private void attackTarget(){ 
-        Vector3 direction = transform.position - currentTarget.transform.position;
-        if(direction.magnitude < radius){}
-        else{ 
-            targetIsActive = false;}}
-}
+    
+    private bool targetIsAvailable(){ 
+        if(targetIsActive == false) return false;
+        if((transform.position - currentTarget.transform.position).magnitude > radius || !currentTarget.gameObject.activeSelf)
+            return false;
+        return true;} 
+    
+    }

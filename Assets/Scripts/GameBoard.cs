@@ -14,6 +14,7 @@ public class GameBoard : MonoBehaviour{
     [SerializeField] private Portal goodPortal;
     [SerializeField] private Portal evilPortal;
     [SerializeField] private GameObject land;
+    [HideInInspector] public TowerBuilding towerBuilder;
 
     private PathBindSearch pathModule; 
     private TileWalls wallsManager;
@@ -35,7 +36,7 @@ public class GameBoard : MonoBehaviour{
 
 
     public void FixedUpdate() {
-        choiceTileCheck();}
+        choiceObjectCheck();}
 
     
     private void initBoardScale(){ 
@@ -135,7 +136,7 @@ public class GameBoard : MonoBehaviour{
                     setTileLocatedObject(initTile);}}}
 
 
-    public void choiceTileCheck(){ 
+    public void choiceObjectCheck(){ 
         if (Input.GetMouseButton(0)){
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit)){
                 if (hit.collider.gameObject.layer == 8){
