@@ -8,6 +8,7 @@ public class EnemySpawner : MonoBehaviour{
     [SerializeField] private GameBoard gameBoard;
     [SerializeField] private float spawnSpeed;
     [SerializeField] private int enemyNumber;
+    [HideInInspector] public GameEconomy gameEconomy;
     private Enemy[] enemies;
     [SerializeField] private Timer timer;
     private int currentEnemyForSpawn;
@@ -24,10 +25,14 @@ public class EnemySpawner : MonoBehaviour{
 
     public void spawnEnemy(Tile tileSpawn){ 
             enemies[currentEnemyForSpawn].gameObject.SetActive(true);
-            enemies[currentEnemyForSpawn].initEnemy(tileSpawn); 
+            enemies[currentEnemyForSpawn].initEnemy(tileSpawn,this); 
             currentEnemyForSpawn++;}
     
+
+    public void returnMoney(int money){ 
+        gameEconomy.getMoneyFromObject(money);}
     
+
     public void FixedUpdate(){ 
         if(currentEnemyForSpawn < enemies.Length){ 
             if(timer.timerState() == Timer.stoped)

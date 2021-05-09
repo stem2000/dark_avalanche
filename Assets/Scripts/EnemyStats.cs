@@ -3,5 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyStats : MonoBehaviour{
-    [SerializeField] private int HP;
-    private void Start() {}}
+    public int HP;
+    public int costLowerBound;
+    public int costUpperBound;}

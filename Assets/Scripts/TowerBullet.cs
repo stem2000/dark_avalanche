@@ -8,8 +8,11 @@ public class TowerBullet : MonoBehaviour
     [HideInInspector] public bool shooted = false;
     [HideInInspector] public Enemy target = null;
     [SerializeField] private float bulletSpeed = 0;
+    [SerializeField] private int damageUpperBound = 0;
+    [SerializeField] private int damageLowerBound = 0;
     private Transform enemyTransform = null;
     [SerializeField] private float sizeCompensation;
+    [SerializeField] private Vector3 enemyPositionYboosted = new Vector3(0,1.5f,0);
 
 
 
@@ -43,10 +46,15 @@ public class TowerBullet : MonoBehaviour
         transform.position = position;}
 
     private void inShoot(){ 
-        if((transform.position - enemyTransform.position).magnitude < 1/bulletSpeed){ 
+        if((transform.position - enemyTransform.position-enemyPositionYboosted).magnitude < 1/bulletSpeed){ 
             shooted = false;
             preparedForShoot = true;
+            toDamage();
             gameObject.SetActive(false);}
         else 
-            transform.Translate((enemyTransform.position-transform.position).normalized*bulletSpeed*Time.fixedDeltaTime);}
+            transform.Translate((enemyTransform.position-transform.position+enemyPositionYboosted).normalized*bulletSpeed*Time.fixedDeltaTime);}
+
+
+    private void toDamage(){ 
+        target.getDamage(Random.Range(damageLowerBound,damageUpperBound));}
 }

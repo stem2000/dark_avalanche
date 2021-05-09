@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8669614998180091871}
   - component: {fileID: 4199015372705420102}
+  - component: {fileID: 3255529960617948297}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -44,3 +45,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   board: {fileID: 0}
+  towerBuilder: {fileID: 0}
+  enemySpawners: []
+--- !u!114 &3255529960617948297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292729244360208138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32a98ff7e938d8547a64b2be38f28619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMoney: 10

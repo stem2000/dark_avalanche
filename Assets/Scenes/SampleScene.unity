@@ -835,5 +835,10 @@ PrefabInstance:
       propertyPath: board
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7637967062544366197, guid: eac2cbea6b956c946b628e314fa9f22f,
+        type: 3}
+      propertyPath: towerCost
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eac2cbea6b956c946b628e314fa9f22f, type: 3}

@@ -60,4 +60,8 @@ public class EnemyMovement : MonoBehaviour
         if((nextTile.transform.position - transform.position).magnitude < Mathf.Sqrt((nextTile.size)*(nextTile.size))/2){
             tileChange(); 
             setDirection();
-            setRotation();}}}
+            setRotation();}}
+    
+    
+    public void enemyFalling(){ 
+        gameObject.SetActive(false);}}

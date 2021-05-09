@@ -5,16 +5,23 @@ using UnityEngine;
 public class Tower : MonoBehaviour{
 
     [SerializeField] private float radius;
+    [HideInInspector] private TowerStats towerStats;
     public float sizeCompensation;
-    public Tile connectedTile = null;
+    [HideInInspector] public Tile connectedTile = null;
     public bool towerSelectedByPlayer = false;
     Collider[] collidersEnemy = new Collider[1];
     private Enemy currentTarget;
     private bool targetIsActive = false;
     public int enemiesLayerMask = 1 << 9;
 
+
     void Start(){
-        collidersEnemy = new Collider[1];}
+        collidersEnemy = new Collider[1];
+        towerStats = GetComponent<TowerStats>();}
+
+
+    public int towerCost(){ 
+        return towerStats.cost;}
 
 
     public bool isTriggered(){ 
@@ -40,10 +47,9 @@ public class Tower : MonoBehaviour{
                 targetIsActive = true;
                 currentTarget = collidersEnemy[0].gameObject.GetComponent<Enemy>();}}
     
+
     private bool targetIsAvailable(){ 
         if(targetIsActive == false) return false;
         if((transform.position - currentTarget.transform.position).magnitude > radius || !currentTarget.gameObject.activeSelf)
             return false;
-        return true;} 
-    
-    }
+        return true;}}
