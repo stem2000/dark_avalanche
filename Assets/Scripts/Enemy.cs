@@ -7,6 +7,8 @@ public class Enemy : MonoBehaviour{
     private EnemyMovement enMov;
     private EnemyStats enStats;
     public EnemySpawner mySpawner;
+    [HideInInspector] public bool deathState;
+    [SerializeField] Timer timerForAnimation;
     private bool initFlag = false;
 
 
@@ -19,7 +21,8 @@ public class Enemy : MonoBehaviour{
         initVariables();
         enMov.initMovElement(startTile);
         mySpawner = spawner;
-        initFlag = true;}
+        initFlag = true;
+        deathState = false;}
 
 
     public void getDamage(int damage){ 
@@ -33,8 +36,9 @@ public class Enemy : MonoBehaviour{
     public void FixedUpdate() {
         if(initFlag){
             enMov.walking();}
-        if(enStats.HP <= 0){ 
+        if(enStats.HP <= 0 && initFlag == true){ 
             enMov.enemyFalling();
             giveMoneyToSpawner();
-            initFlag = false;}}
+            initFlag = false;
+            gameObject.SetActive(false);}}
 }

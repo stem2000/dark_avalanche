@@ -10,6 +10,8 @@ public class EnemyMovement : MonoBehaviour
     private Vector3 direction;
     private Rigidbody rB;
     private Animator skeletAnim;
+    private Enemy enemyThis;
+    private BoxCollider enemyCollider;
 
 
 
@@ -33,7 +35,10 @@ public class EnemyMovement : MonoBehaviour
 
     public void initVariables(){ 
         rB = GetComponent<Rigidbody>();
-        skeletAnim = GetComponent<Animator>();}
+        skeletAnim = GetComponent<Animator>();
+        enemyThis = GetComponent<Enemy>();
+        enemyCollider = GetComponent<BoxCollider>();
+        enemyCollider.enabled = true;}
 
 
     public void tileChange(){ 
@@ -41,6 +46,7 @@ public class EnemyMovement : MonoBehaviour
             nextTile = nextTile.tileDirection;
         else if(nextTile.tileType == TileTypes.DestPoint){ 
                 speed = 0;
+                enemyThis.deathState = true;
                 gameObject.SetActive(false);}
         else{ 
             speed = 0;}}
@@ -64,4 +70,8 @@ public class EnemyMovement : MonoBehaviour
     
     
     public void enemyFalling(){ 
-        gameObject.SetActive(false);}}
+        speed = 0;
+        enemyThis.deathState = true;
+        enemyCollider.enabled = false;
+        skeletAnim.StopPlayback();
+        skeletAnim.Play("Death");}}

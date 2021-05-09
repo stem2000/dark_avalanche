@@ -8,10 +8,12 @@ public class Game : MonoBehaviour
     [SerializeField] TowerBuilding towerBuilder;
     [SerializeField] private EnemySpawner[] enemySpawners;
     [HideInInspector] private GameEconomy gameEconomy;
+    [HideInInspector] private GameUI gameUI;
     
 
     void Start(){
         gameEconomy = GetComponent<GameEconomy>();
+        gameUI = GetComponent<GameUI>();
         board.boardInitialization();
         board.createTileSet(); 
         board.initTilesRelations();
@@ -30,8 +32,8 @@ public class Game : MonoBehaviour
         towerBuilder.gameEconomy = gameEconomy;
         for(int i = 0; i < enemySpawners.Length;i++){ 
             enemySpawners[i].gameEconomy = gameEconomy;}}
-
-
-
-
-}
+        
+        
+    private void Update(){ 
+         gameUI.moneyText.text = gameUI.startMoneyText + gameEconomy.moneyInfo().ToString();
+         gameUI.defensePoints.text = gameUI.startDefenseText + gameEconomy.dPointsInfo().ToString();}}

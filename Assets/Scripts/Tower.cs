@@ -50,6 +50,6 @@ public class Tower : MonoBehaviour{
 
     private bool targetIsAvailable(){ 
         if(targetIsActive == false) return false;
-        if((transform.position - currentTarget.transform.position).magnitude > radius || !currentTarget.gameObject.activeSelf)
+        if((transform.position - currentTarget.transform.position).magnitude > radius || currentTarget.deathState)
             return false;
         return true;}}
