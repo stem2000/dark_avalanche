@@ -33,6 +33,10 @@ public class Enemy : MonoBehaviour{
         mySpawner.returnMoney(Random.Range(enStats.costLowerBound,enStats.costUpperBound));}
 
 
+    public void reduceDefensePoints(){ 
+        mySpawner.gameEconomy.reduceDefensePoints(1);}
+
+
     public void FixedUpdate() {
         if(initFlag){
             enMov.walking();}
