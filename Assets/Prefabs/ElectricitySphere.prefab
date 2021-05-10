@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8773786691588970523}
   - component: {fileID: 8774618639464010289}
   - component: {fileID: 6334230771254770720}
+  - component: {fileID: 3445407092118248312}
   m_Layer: 0
   m_Name: ElectricitySphere
   m_TagString: Untagged
@@ -4838,3 +4839,16 @@ MonoBehaviour:
   damageLowerBound: 15
   sizeCompensation: 0.1
   enemyPositionYboosted: {x: 0, y: 1.5, z: 0}
+--- !u!135 &3445407092118248312
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8864457168719814339}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.2
+  m_Center: {x: -0.10618794, y: 0.059093952, z: -0.023956776}

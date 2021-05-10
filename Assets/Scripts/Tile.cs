@@ -102,4 +102,5 @@ public enum TileTypes{
     Spawn,
     DestPoint,
     Wall,
+    Tower,
     Free}

@@ -6,6 +6,7 @@ public class PathBindSearch : MonoBehaviour{
 
     private List<Tile> destinationTiles = new List<Tile>();
     private List<Tile> tilesQueue = new List<Tile>();
+    private List<Tile> tilesQueueCPB = new List<Tile>();
 
 
     public void bindTileRelations(Tile[] tileList, int boardSizeX,int boardSizeZ){ 
@@ -83,8 +84,58 @@ public class PathBindSearch : MonoBehaviour{
             tilesQueue.RemoveAt(0);}}
 
 
-    public void reactivateTilesState(Tile[] tileList){ 
+
+    public bool checkPathBFS(){ 
+        Tile leftT;
+        Tile rightT;
+        Tile upperT;
+        Tile lowerT;
+        Tile startFP;
+
+        startFP = destinationTiles[0];
+        startFP.searchState = true;
+        tilesQueueCPB.Add(startFP);
+
+        while(tilesQueueCPB.Count != 0){ 
+
+            rightT = tilesQueueCPB[0].rightTile;
+            upperT = tilesQueueCPB[0].upperTile;
+            leftT = tilesQueueCPB[0].leftTile;
+            lowerT = tilesQueueCPB[0].lowerTile;
+
+
+            if(rightT != null && rightT.searchState == false && rightT.tileType != TileTypes.Wall){ 
+                rightT.searchState = true;
+                tilesQueueCPB.Add(rightT);}
+
+            if(upperT != null && upperT.searchState == false && upperT.tileType != TileTypes.Wall){ 
+                upperT.searchState = true;
+                tilesQueueCPB.Add(upperT);}
+
+            if(leftT != null && leftT.searchState == false && leftT.tileType != TileTypes.Wall){ 
+                leftT.searchState = true;
+                tilesQueueCPB.Add(leftT);}
+
+            if(lowerT != null && lowerT.searchState == false && lowerT.tileType != TileTypes.Wall){ 
+                lowerT.searchState = true;
+                tilesQueueCPB.Add(lowerT);}
+
+            if(tilesQueueCPB[0].tileType == TileTypes.Spawn){
+                tilesQueueCPB.Clear();
+                return true;}
+
+            tilesQueueCPB.RemoveAt(0);} 
+
+        return false;}
+
+
+    public void reactivateTilesStateAndDirection(Tile[] tileList){ 
         for(int i = 0; i < tileList.Length;i++){ 
             tileList[i].searchState = false;
             tileList[i].tileDirection = null;}}
+
+
+    public void reactivateTilesSearchState(Tile[] tileList){ 
+        for(int i = 0; i < tileList.Length;i++){ 
+            tileList[i].searchState = false;}}
 }

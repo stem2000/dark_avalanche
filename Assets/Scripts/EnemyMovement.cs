@@ -6,7 +6,7 @@ public class EnemyMovement : MonoBehaviour
 {
     [HideInInspector] public Tile startTile;
     [SerializeField] private Vector3 plusYpos = new Vector3(0,0.2f,0);
-    private Tile nextTile;
+    [SerializeField] private Tile nextTile;
     private Tile prevTile;
     public float speed = 3;
     private Vector3 direction;
@@ -80,8 +80,8 @@ public class EnemyMovement : MonoBehaviour
         skeletAnim.Play("Death");}
     
     
-    private void OnCollisionEnter(Collision collision){ 
-        if(collision.gameObject.layer == 10){ 
+    private void OnTriggerEnter(Collider trigger){ 
+        if(trigger.gameObject.layer == 10){ 
                 searchAlternativePath();}}
     
     

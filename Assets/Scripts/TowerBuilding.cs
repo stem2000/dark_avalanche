@@ -24,13 +24,23 @@ public class TowerBuilding : MonoBehaviour
             return;
 
         if(Input.GetKeyDown(KeyCode.T) && board.getSelectedTile().tileType == TileTypes.Free){ 
-            if(!checkEconomy())
-                return;
+            
+            selectedTile.tileType = TileTypes.Wall;
+
+            if(!board.checkPathIsClearForTB()){ 
+                selectedTile.tileType = TileTypes.Free;
+                board.takeOffSelection();
+                return;}
+
+            if(!checkEconomy()){
+                selectedTile.tileType = TileTypes.Free;
+                board.takeOffSelection();
+                return;}
+
             newTower = Instantiate(tower);
             newTower.transform.position = board.getSelectedTile().transform.position;
             newTower.transform.localScale =  newTower.transform.localScale*selectedTile.size*newTower.sizeCompensation;
             newTower.connectedTile = selectedTile;
-            selectedTile.tileType = TileTypes.Wall;
             board.takeOffSelection();
             board.pathBuilding();}}
 

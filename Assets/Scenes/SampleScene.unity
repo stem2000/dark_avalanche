@@ -851,7 +851,7 @@ PrefabInstance:
     - target: {fileID: 8414767714342797721, guid: ad66f26cfa72c664fa67cc6135577b48,
         type: 3}
       propertyPath: enemyNumber
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad66f26cfa72c664fa67cc6135577b48, type: 3}
@@ -870,7 +870,7 @@ PrefabInstance:
     - target: {fileID: 3255529960617948297, guid: 9300e6727ca63a942a7480cc10218216,
         type: 3}
       propertyPath: playerMoney
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3255529960617948297, guid: 9300e6727ca63a942a7480cc10218216,
         type: 3}
