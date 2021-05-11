@@ -878,7 +878,7 @@ PrefabInstance:
     - target: {fileID: 8414767714342797721, guid: ad66f26cfa72c664fa67cc6135577b48,
         type: 3}
       propertyPath: enemyWaves.Array.data[1].enemyHP
-      value: 60
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 8414767714342797721, guid: ad66f26cfa72c664fa67cc6135577b48,
         type: 3}
@@ -903,7 +903,7 @@ PrefabInstance:
     - target: {fileID: 8414767714342797721, guid: ad66f26cfa72c664fa67cc6135577b48,
         type: 3}
       propertyPath: enemyWaves.Array.data[0].enemyNumber
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8414767714342797721, guid: ad66f26cfa72c664fa67cc6135577b48,
         type: 3}
@@ -918,7 +918,7 @@ PrefabInstance:
     - target: {fileID: 8414767714342797721, guid: ad66f26cfa72c664fa67cc6135577b48,
         type: 3}
       propertyPath: enemyWaves.Array.data[0].timeAfterWave
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8414767714342797721, guid: ad66f26cfa72c664fa67cc6135577b48,
         type: 3}
@@ -933,17 +933,17 @@ PrefabInstance:
     - target: {fileID: 8414767714342797721, guid: ad66f26cfa72c664fa67cc6135577b48,
         type: 3}
       propertyPath: enemyWaves.Array.data[0].enemySpawnSpeed
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8414767714342797721, guid: ad66f26cfa72c664fa67cc6135577b48,
         type: 3}
       propertyPath: enemyWaves.Array.data[1].enemySpawnSpeed
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8414767714342797721, guid: ad66f26cfa72c664fa67cc6135577b48,
         type: 3}
       propertyPath: enemyWaves.Array.data[2].enemySpawnSpeed
-      value: 3
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad66f26cfa72c664fa67cc6135577b48, type: 3}
@@ -962,7 +962,7 @@ PrefabInstance:
     - target: {fileID: 3255529960617948297, guid: 9300e6727ca63a942a7480cc10218216,
         type: 3}
       propertyPath: playerMoney
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3255529960617948297, guid: 9300e6727ca63a942a7480cc10218216,
         type: 3}

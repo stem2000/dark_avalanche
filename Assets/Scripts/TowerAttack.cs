@@ -32,8 +32,7 @@ public class TowerAttack : MonoBehaviour
 
 
     public void FixedUpdate() {
-            if(timer.timerState() == Timer.stoped && thisTower.isTriggered())
-                timer.startTimer(attackSpeed);
+            timer.startTimer(attackSpeed);
             if(timer.timerState() == Timer.ended){ 
                 if(thisTower.isTriggered())
                     Attack();

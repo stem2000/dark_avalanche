@@ -18,7 +18,6 @@ public class Enemy : MonoBehaviour{
 
 
     public void initEnemy(Tile startTile, EnemySpawner spawner){
-        initVariables();
         enMov.initMovElement(startTile);
         mySpawner = spawner;
         initFlag = true;
@@ -37,7 +36,7 @@ public class Enemy : MonoBehaviour{
         mySpawner.gameEconomy.reduceDefensePoints(1);}
 
 
-    public void initStats(EnemyWave statsObj){ 
+    public void setStats(EnemyWave statsObj){ 
         if(statsObj.enemyHP != 0)
             enStats.HP = statsObj.enemyHP;
         if(statsObj.enemySpeed != 0)

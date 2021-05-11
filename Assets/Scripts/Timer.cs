@@ -17,6 +17,7 @@ public class Timer : MonoBehaviour
         state = stoped;}
 
     public void startTimer(float period) {
+        if(state == working || state == ended) return;
         this.period = period;
         state = working;}
 
