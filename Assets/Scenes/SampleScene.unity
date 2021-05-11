@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 281753336}
   - component: {fileID: 281753335}
   m_Layer: 0
-  m_Name: EventSystem
+  m_Name: UIEventSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -850,7 +850,99 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8414767714342797721, guid: ad66f26cfa72c664fa67cc6135577b48,
         type: 3}
+      propertyPath: timerSpawn
+      value: 
+      objectReference: {fileID: 6037047321497460552, guid: 27400a06c998c1f479e0300567ac9ae6,
+        type: 3}
+    - target: {fileID: 8414767714342797721, guid: ad66f26cfa72c664fa67cc6135577b48,
+        type: 3}
+      propertyPath: timerWaves
+      value: 
+      objectReference: {fileID: 6037047321497460552, guid: 27400a06c998c1f479e0300567ac9ae6,
+        type: 3}
+    - target: {fileID: 8414767714342797721, guid: ad66f26cfa72c664fa67cc6135577b48,
+        type: 3}
       propertyPath: enemyNumber
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8414767714342797721, guid: ad66f26cfa72c664fa67cc6135577b48,
+        type: 3}
+      propertyPath: enemyWaves.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8414767714342797721, guid: ad66f26cfa72c664fa67cc6135577b48,
+        type: 3}
+      propertyPath: enemyWaves.Array.data[0].enemyHP
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8414767714342797721, guid: ad66f26cfa72c664fa67cc6135577b48,
+        type: 3}
+      propertyPath: enemyWaves.Array.data[1].enemyHP
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8414767714342797721, guid: ad66f26cfa72c664fa67cc6135577b48,
+        type: 3}
+      propertyPath: enemyWaves.Array.data[2].enemyHP
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8414767714342797721, guid: ad66f26cfa72c664fa67cc6135577b48,
+        type: 3}
+      propertyPath: enemyWaves.Array.data[0].enemySpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8414767714342797721, guid: ad66f26cfa72c664fa67cc6135577b48,
+        type: 3}
+      propertyPath: enemyWaves.Array.data[1].enemySpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8414767714342797721, guid: ad66f26cfa72c664fa67cc6135577b48,
+        type: 3}
+      propertyPath: enemyWaves.Array.data[2].enemySpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8414767714342797721, guid: ad66f26cfa72c664fa67cc6135577b48,
+        type: 3}
+      propertyPath: enemyWaves.Array.data[0].enemyNumber
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8414767714342797721, guid: ad66f26cfa72c664fa67cc6135577b48,
+        type: 3}
+      propertyPath: enemyWaves.Array.data[1].enemyNumber
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8414767714342797721, guid: ad66f26cfa72c664fa67cc6135577b48,
+        type: 3}
+      propertyPath: enemyWaves.Array.data[2].enemyNumber
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8414767714342797721, guid: ad66f26cfa72c664fa67cc6135577b48,
+        type: 3}
+      propertyPath: enemyWaves.Array.data[0].timeAfterWave
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8414767714342797721, guid: ad66f26cfa72c664fa67cc6135577b48,
+        type: 3}
+      propertyPath: enemyWaves.Array.data[1].timeAfterWave
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8414767714342797721, guid: ad66f26cfa72c664fa67cc6135577b48,
+        type: 3}
+      propertyPath: enemyWaves.Array.data[2].timeAfterWave
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8414767714342797721, guid: ad66f26cfa72c664fa67cc6135577b48,
+        type: 3}
+      propertyPath: enemyWaves.Array.data[0].enemySpawnSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8414767714342797721, guid: ad66f26cfa72c664fa67cc6135577b48,
+        type: 3}
+      propertyPath: enemyWaves.Array.data[1].enemySpawnSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8414767714342797721, guid: ad66f26cfa72c664fa67cc6135577b48,
+        type: 3}
+      propertyPath: enemyWaves.Array.data[2].enemySpawnSpeed
       value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -870,7 +962,7 @@ PrefabInstance:
     - target: {fileID: 3255529960617948297, guid: 9300e6727ca63a942a7480cc10218216,
         type: 3}
       propertyPath: playerMoney
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3255529960617948297, guid: 9300e6727ca63a942a7480cc10218216,
         type: 3}

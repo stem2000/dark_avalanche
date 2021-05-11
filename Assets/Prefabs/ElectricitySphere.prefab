@@ -4834,7 +4834,7 @@ MonoBehaviour:
   preparedForShoot: 1
   shooted: 0
   target: {fileID: 0}
-  bulletSpeed: 3
+  bulletSpeed: 5
   damageUpperBound: 5
   damageLowerBound: 15
   sizeCompensation: 0.1

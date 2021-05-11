@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour{
 
     private EnemyMovement enMov;
-    private EnemyStats enStats;
+    [HideInInspector] public EnemyStats enStats;
     public EnemySpawner mySpawner;
     [HideInInspector] public bool deathState;
     [SerializeField] Timer timerForAnimation;
@@ -35,6 +35,19 @@ public class Enemy : MonoBehaviour{
 
     public void reduceDefensePoints(){ 
         mySpawner.gameEconomy.reduceDefensePoints(1);}
+
+
+    public void initStats(EnemyWave statsObj){ 
+        if(statsObj.enemyHP != 0)
+            enStats.HP = statsObj.enemyHP;
+        if(statsObj.enemySpeed != 0)
+            enStats.Speed = statsObj.enemySpeed;
+        if(statsObj.enemySpeed != 0)
+            enStats.Speed = statsObj.enemySpeed;
+        if(statsObj.enemySpeed != 0)
+            enStats.Speed = statsObj.enemySpeed;
+        if(statsObj.Scale != Vector3.zero)
+            transform.localScale = statsObj.Scale;}
 
 
     public void FixedUpdate() {

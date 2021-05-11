@@ -8,7 +8,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private Vector3 plusYpos = new Vector3(0,0.2f,0);
     [SerializeField] private Tile nextTile;
     private Tile prevTile;
-    public float speed = 3;
+    [SerializeField] private float speed;
     private Vector3 direction;
     private Rigidbody rB;
     private Animator skeletAnim;
@@ -40,6 +40,7 @@ public class EnemyMovement : MonoBehaviour
         skeletAnim = GetComponent<Animator>();
         enemyThis = GetComponent<Enemy>();
         enemyCollider = GetComponent<BoxCollider>();
+        speed = enemyThis.enStats.Speed;
         enemyCollider.enabled = true;}
 
 

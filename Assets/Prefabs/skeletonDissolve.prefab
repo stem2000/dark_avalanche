@@ -690,6 +690,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10264f9090cac6d4aaebd43ba40d1baf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enStats: {fileID: 0}
   mySpawner: {fileID: 0}
   deathState: 0
   timerForAnimation: {fileID: 6037047321497460552, guid: 27400a06c998c1f479e0300567ac9ae6,
@@ -741,6 +742,7 @@ MonoBehaviour:
   HP: 60
   costLowerBound: 1
   costUpperBound: 4
+  Speed: 1
 --- !u!114 &-2764113819101372472
 MonoBehaviour:
   m_ObjectHideFlags: 0
