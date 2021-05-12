@@ -20,7 +20,8 @@ public class GameEconomy : MonoBehaviour{
 
 
     public void reduceDefensePoints(int lossDP){ 
-        defensePoints -= lossDP;}
+        if(defensePoints > 0)
+            defensePoints -= lossDP;}
 
     public int moneyInfo(){ 
         return playerMoney;}

@@ -10,10 +10,12 @@ public class TowerAttack : MonoBehaviour
    [SerializeField] private int startBulletsCount;
    [SerializeField] private float attackSpeed;
    private TowerBullet[] bulletsList;
+   private TowerAudio towerAudio;
    
 
     private void Start() {
         thisTower = GetComponent<Tower>();
+        towerAudio = GetComponent<TowerAudio>();
         bulletsList = new TowerBullet[startBulletsCount];
         timer = Instantiate(timer);
         for(int i = 0; i < startBulletsCount;i++){ 
@@ -28,6 +30,7 @@ public class TowerAttack : MonoBehaviour
             if(bulletsList[iterMem].preparedForShoot == true){
                 bulletsList[iterMem].gameObject.SetActive(true);
                 bulletsList[iterMem].initForShoot(thisTower.getFocusEnemy(),transform.position + new Vector3(0,2,0));
+                towerAudio.playAttackSound();
                 break; }}}
 
 

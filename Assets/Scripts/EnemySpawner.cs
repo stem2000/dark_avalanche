@@ -99,7 +99,7 @@ public class EnemySpawner : MonoBehaviour{
 [System.Serializable]
 public class EnemyWave{
     public int enemyNumber = 0;
-    public int enemySpeed = 0;
+    public float enemySpeed = 0;
     public int enemyHP = 0;
     public float enemySpawnSpeed = 0;
     public Vector3 Scale = Vector3.zero;

@@ -113,15 +113,15 @@ public class GameBoard : MonoBehaviour{
     private void initBoardSizeAndView(){ 
         boardSize = new Vector3Int(boardSizeX,0,boardSizeY);
         initBoardScale();
-        boardView = "***W******"+
-                    "W*********"+
+        boardView = "***W***W**"+
+                    "W***W*****"+
                     "*******W**"+
-                    "*S********"+
+                    "*S**W*****"+
                     "*****W****"+
                     "**W*******"+
-                    "*W*****W**"+
-                    "**********"+
-                    "********D*"+
+                    "*W**W**W**"+
+                    "*****W****"+
+                    "*W*W****D*"+
                     "**********";
         if(boardView.Length != boardSize.x*boardSize.z)
             Debug.Log("[boardView does no match the game board]");}

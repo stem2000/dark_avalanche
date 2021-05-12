@@ -14,6 +14,7 @@ public class EnemyMovement : MonoBehaviour
     private Animator skeletAnim;
     private Enemy enemyThis;
     private BoxCollider enemyCollider;
+    private EnemyAudio enemyAudio;
 
 
 
@@ -40,6 +41,7 @@ public class EnemyMovement : MonoBehaviour
         skeletAnim = GetComponent<Animator>();
         enemyThis = GetComponent<Enemy>();
         enemyCollider = GetComponent<BoxCollider>();
+        enemyAudio = GetComponent<EnemyAudio>();
         speed = enemyThis.enStats.Speed;
         enemyCollider.enabled = true;}
 
@@ -77,7 +79,7 @@ public class EnemyMovement : MonoBehaviour
         speed = 0;
         enemyThis.deathState = true;
         enemyCollider.enabled = false;
-        skeletAnim.StopPlayback();
+        enemyAudio.playFallingSound();
         skeletAnim.Play("Death");}
     
     

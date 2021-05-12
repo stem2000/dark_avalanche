@@ -49,12 +49,16 @@ public class Enemy : MonoBehaviour{
             transform.localScale = statsObj.Scale;}
 
 
+    public void setActiveReceiver(){}
+    public void setActiveFalse(){ 
+        gameObject.SetActive(false);}
+
+
     public void FixedUpdate() {
         if(initFlag){
             enMov.walking();}
         if(enStats.HP <= 0 && initFlag == true){ 
             enMov.enemyFalling();
             giveMoneyToSpawner();
-            initFlag = false;
-            gameObject.SetActive(false);}}
+            initFlag = false;}}
 }
